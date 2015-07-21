@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>try bolt</title>
+<link rel="shortcut icon" type="image/png" href="favicon.ico" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+<iframe id="frame" src="" style="border: 0; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100%"></iframe>
+</body>
+</html>
+
+<script>
+    $("body").ready(function() {
+      $.ajax({type: "POST", data: JSON.stringify({"path": "/"}), 
+        url: "http://notebooks.codeneuro.org:9000/api/spawn/"})
+      .done( function(data) {
+        $('#frame').attr('src', data.url + 'notebooks/bolt/intro.ipynb', '_self');
+      })
+    })
+</script>
